@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
+import '../../features/menu/menu_screen.dart';
 import '../../features/auth/login_screen.dart';
 import '../../features/auth/register_screen.dart';
 import '../../features/home/home_screen.dart';
@@ -51,17 +51,15 @@ final GoRouter appRouter =
       },
     ),
 
-    GoRoute(
-      path: '/menu',
-      builder: (
-        context,
-        state,
-      ) {
-        return const _ComingSoonScreen(
-          title: 'Menu',
-        );
-      },
-    ),
+ GoRoute(
+  path: '/menu',
+  builder: (
+    context,
+    state,
+  ) {
+    return const MenuScreen();
+  },
+),
 
     GoRoute(
       path: '/cart',
