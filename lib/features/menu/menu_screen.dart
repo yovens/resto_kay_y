@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-
+import 'package:go_router/go_router.dart';
 import '../../core/network/api_exception.dart';
 import '../../models/category.dart';
 import '../../models/plat.dart';
@@ -110,19 +110,14 @@ class _MenuScreenState extends State<MenuScreen> {
     );
   }
 
-  void _openCart() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (_) =>
-            const CartScreen(),
-      ),
-    ).then((_) {
-      if (mounted) {
-        setState(() {});
-      }
-    });
-  }
+
+void _openCart() {
+  context.push('/cart').then((_) {
+    if (mounted) {
+      setState(() {});
+    }
+  });
+}
 
   @override
   Widget build(BuildContext context) {

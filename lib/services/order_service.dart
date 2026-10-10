@@ -43,4 +43,29 @@ class OrderService {
       'Réponse serveur a pa valab.',
     );
   }
+
+  
+  Future<List<Map<String, dynamic>>> getOrders() async {
+    final response = await _apiClient.get('/commandes');
+
+    dynamic data = response;
+
+    if (response is Map) {
+      data = response['commandes'] ??
+          response['data'] ??
+          response['orders'] ??
+          response['commandes_client'];
+    }
+
+    if (data is! List) {
+      throw const ApiException(
+        'Laravel pa retounen yon lis kòmand ki valab.',
+      );
+    }
+
+    return data
+        .whereType<Map>()
+        .map((item) => Map<String, dynamic>.from(item))
+        .toList();
+  }
 }
